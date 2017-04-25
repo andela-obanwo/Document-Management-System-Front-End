@@ -1,0 +1,40 @@
+extends base.pug
+block title
+  | Signup
+block body
+  .row
+    .col.s7
+    form.col.s3(action="" method='post')
+      .row
+        .input-field.col.s12
+          input#firstname.validate(type='text' name='firstname')
+          label(for='firstname') First Name
+        .input-field.col.s12
+          input#lastname.validate(type='text' name='lastname')
+          label(for='lastname') Last Name
+      .row
+        .input-field.col.s12
+          input#email.validate(type='email' name='email')
+          label(for='email' data-error='Please Check Your Input') Email
+      .row
+        .input-field.col.s12
+          input#password.validate(type='password' name='password')
+          label(for='password') Password
+      .row
+        .input-field.col.s12
+          input#username.validate(type='text' name='username')
+          label(for='username') Username
+      .row
+        .input-field.col.s12
+          select#department(name='department')
+            option(value="" selected) Select Your Department
+            option(value='2') Sales
+            option(value='3') Marketing
+            option(value='1') Technology
+            option(value='5') Learning
+          label Department
+      .row
+        button.btn.waves-effect.waves-light(type='submit', name='action')
+          | Submit
+          i.material-icons.right send
+    .col.s2

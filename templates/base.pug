@@ -1,0 +1,72 @@
+doctype html
+html(lang='en')
+  head
+    title
+      block title
+    link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    // Import materialize.css
+    link(type='text/css', rel='stylesheet', href='static/css/materialize.min.css', media='screen,projection')
+    // Let browser know website is optimized for mobile
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    // Import jQuery before materialize.js
+    script(type='text/javascript', src='static/js/jquery-3.2.1.js')
+    script(type='text/javascript', src='static/js/materialize.min.js')
+    script
+      | $(document).ready(function() {
+      | $('select').material_select();
+      | });
+      | $(document).ready(function(){
+      | $('.tooltipped').tooltip({delay: 50});
+      | });
+      | $(document).ready(function(){
+      | $('.collapsible').collapsible();
+      | });
+  body
+    | {% with messages = get_flashed_messages() %}
+    | {% if messages %}
+    | {% for message in messages %}
+    script
+      | var $toastContent = $("
+      span {{message}}
+      | ");
+      |   Materialize.toast($toastContent, 5000, 'rounded red');
+    |     {% endfor %}
+    |   {% endif %}
+    | {% endwith %}
+    {% if not logged_in%}
+    nav
+      .nav-wrapper
+        a.brand-logo.center(href='#!') Logo
+        ul.left.hide-on-med-and-down
+          li.active
+            a(href="{{url_for('base')}}") Home
+          li.active
+            a(href="{{url_for('signup')}}") Signup
+          li.active
+            a(href="{{url_for('login')}}") Login
+          li.active
+            a(href='collapsible.html') JavaScript
+    {% else %}
+    nav
+      .nav-wrapper
+        a.brand-logo.left(href="{{url_for('base')}}") Logo
+        ul.right.hide-on-med-and-down
+          li.active
+            a(href="{{url_for('dashboard')}}") Home
+          li.active
+            a(href="{{url_for('documents')}}") Documents
+          li.active
+            a(href="{{url_for('users')}}") Users
+          li.active
+            a(href="{{url_for('departments')}}") Departments
+          li.active
+            a(href="{{url_for('accesstypes')}}") Access Types
+          li.active
+            a(href="{{url_for('documenttypes')}}") Document Types
+          li.active
+            a(href="{{url_for('roles')}}") Roles
+          li.active
+            a(href="{{url_for('logout')}}") Logout
+         
+    {% endif %}
+    block body

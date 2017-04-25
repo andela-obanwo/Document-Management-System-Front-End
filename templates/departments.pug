@@ -1,0 +1,30 @@
+extends base.pug
+block title
+  | Departments
+block body
+  | {% if req.status_code == 200 %}
+  .row
+    form.col.l3(action="" method='post')
+      .row
+        .input-field.col.s12
+          input#role_name.validate(placeholder='Enter A New Department Name', type='text', name="department_name")
+      .row
+        button.btn.waves-effect.waves-light(type='submit', name='action')
+          | Create Department
+          i.material-icons.right send
+
+    .col.l9
+      ul.collapsible(data-collapsible="expandable")
+        | {% for item in req.json()['departments']['rows'] %}
+        li
+          .collapsible-header {{item.name}}
+            span.right
+              a.waves-effect.waves-light.btn(href="{{url_for('departments_specific', id=item.id)}}") DELETE
+          .collapsible-body {% for k,v in item.items() %}
+            p {{ "{}: {}".format(k,v) }}
+            {% endfor %}
+
+        | {% endfor %}
+        | {% else %}
+        | {% endif %}
+    

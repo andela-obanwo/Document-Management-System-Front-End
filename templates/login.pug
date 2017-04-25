@@ -1,0 +1,20 @@
+extends base.pug
+block title
+  | Login
+block body
+  .row
+    .col.s7
+    form.col.s3(action="" method='post')
+      .row
+        .input-field.col.s12
+          input#email.validate(type='email' name='email')
+          label(for='email' data-error='Please Check Your Input') Email
+      .row
+        .input-field.col.s12
+          input#password.validate(type='password' name='password')
+          label(for='password') Password
+      .row
+        button.btn.waves-effect.waves-light(type='submit', name='action')
+          | Submit
+          i.material-icons.right send
+    .col.s2
