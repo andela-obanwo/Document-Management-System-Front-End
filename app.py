@@ -2,10 +2,13 @@
 from flask import Flask, render_template, redirect, request, session, url_for, flash
 from flask_wtf import Form
 from logging import DEBUG
+from dotenv import load_dotenv, find_dotenv
 import requests
-# api_url = 'https://document-manager-api.herokuapp.com'
-api_url = 'http://localhost:4000'
+import os
 
+env = load_dotenv(find_dotenv())
+api_url = os.getenv("API_URL")
+print(api_url)
 r = requests.get(api_url)
 
 print (r.json(), type(r.json()))

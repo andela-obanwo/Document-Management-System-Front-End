@@ -36,7 +36,7 @@ html(lang='en')
     {% if not logged_in%}
     nav
       .nav-wrapper
-        a.brand-logo.center(href='#!') Logo
+        a.brand-logo.center(href='#!') Banorg Document Management
         ul.left.hide-on-med-and-down
           li.active
             a(href="{{url_for('base')}}") Home
@@ -44,12 +44,10 @@ html(lang='en')
             a(href="{{url_for('signup')}}") Signup
           li.active
             a(href="{{url_for('login')}}") Login
-          li.active
-            a(href='collapsible.html') JavaScript
     {% else %}
     nav
       .nav-wrapper
-        a.brand-logo.left(href="{{url_for('base')}}") Logo
+        a.brand-logo.left(href="{{url_for('base')}}") Banorg Document Management
         ul.right.hide-on-med-and-down
           li.active
             a(href="{{url_for('dashboard')}}") Home
